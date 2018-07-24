@@ -1,0 +1,96 @@
+swagger: '2.0'
+info:
+  title: ForecastService
+  description: TBU
+  version: 0.1.0
+  contact:
+    email: adam@adamnovotny.com
+host: TBU
+basePath: /
+tags:
+  - name: home
+    description: Default path
+schemes:
+  - https
+paths:
+  /home:
+    get:
+      tags:
+        - home
+      summary: Default path
+      description: ''
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+  /forecast-get:
+    get:
+      summary: Get forecast data
+      description: ''
+      produces:
+        - application/json
+      parameters:
+        - name: ticker
+          in: query
+          description: Stock ticker
+          type: string
+        - name: date_from
+          in: query
+          description: date formatted as "mm-dd-yyyy"
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Forecasts'
+        '404':
+          description: Forecast not found
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/Error'
+  /forecast-insert:
+    post:
+      summary: Insert new forecast data
+      description: ''
+      produces:
+        - application/json
+      parameters:
+        - name: data
+          in: body
+          description: Forecast data
+          schema:
+            $ref: '#/definitions/Forecasts'
+      responses:
+        '200':
+          description: OK
+definitions:
+  ForecastLine:
+    type: array
+    required:
+      - date
+      - price
+    items:
+      properties:
+        date_from:
+          type: string
+        ticker:
+          type: string
+        date_to:
+          type: string
+        return:
+          type: string
+        confidence:
+          type: string
+  Forecasts:
+    type: object
+    properties:
+        data:
+          $ref: '#/definitions/ForecastLine'
+  Error:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
