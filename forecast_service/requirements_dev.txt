@@ -65,6 +65,6 @@ troposphere==2.2.0
 Unidecode==1.0.22
 urllib3==1.23
 virtualenv==15.1.0
-Werkzeug==0.12
+Werkzeug==0.15.3
 whichcraft==0.4.1
 wsgi-request-logger==0.4.6
