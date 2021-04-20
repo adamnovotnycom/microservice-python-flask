@@ -44,7 +44,7 @@ ply==3.8
 poyo==0.4.1
 protobuf==3.5.1
 psycopg2==2.7.3.2
-py==1.5.2
+py==1.10.0
 pyasn1==0.4.2
 pyasn1-modules==0.2.1
 PyJWT==1.5.3
